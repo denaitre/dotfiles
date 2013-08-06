@@ -2,7 +2,6 @@
 execute pathogen#infect()
 Helptags
 filetype plugin indent on
-" 
 set nocompatible
 set modelines=0
 
@@ -54,15 +53,6 @@ vnoremap <tab> %
 " Handles long lines nicely
 set wrap
 set textwidth=79 fo=qct
-"set formatoptions=qrn1
-"set colorcolumn=79
-
-" /!\ Filter file's extension /!\
-" highlight caracters after 78
-"augroup vimrc_autocmds
-"  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-"  autocmd BufEnter * match OverLength /\%78v.*/
-"augroup END
 
 "Map : to ; in command mode
 nnoremap ; :
@@ -79,36 +69,6 @@ au VimResized * :wincmd =
 " Wildmenu completion
 set wildmenu
 set wildmode=list:longest
-
-
-" =========== Gvim Settings =============
-
-" Removing scrollbars
-if has("gui_running")
-    set guitablabel=%-0.12t%M
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions+=a
-    set guioptions-=m
-    colo badwolf
-    set listchars=tab:▸\ ,eol:¬         " Invisibles using the Textmate style
-else
-    set t_Co=256
-    colorschem badwolf
-endif
-
-" Special Settings for Consoles
-"if !has("gui_running")
-"    set t_Co=256
-"    colorschem badwolf
-"endif
-
-" Source the vimrc file after saving it
-"autocmd bufwritepost .vimrc source ~/.vimrc
-
-" ========== END Gvim Settings ==========
-
 
 
 " ========== Plugin Settings =========="
@@ -152,23 +112,11 @@ let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_Close_On_Select = 1 " Close the taglist window when a file or tag is selected.
 let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the taglist window.
 let Tlist_WinWidth = 40
-" let Tlist_Ctags_Cmd = 'ctags --c++-kinds=+p --fields=+iaS --extra=+q --languages=c++'
-" very slow, so I disable this
-" let Tlist_Process_File_Always = 1 " To use the :TlistShowTag and the :TlistShowPrototype commands without the taglist window and the taglist menu, you should set this variable to 1.
-":TlistShowPrototype [filename] [linenumber]
 nnoremap t <C-]>
 nmap <C-k> <ESC>:TagbarToggle<cr>
 imap <C-k> <ESC>:TagbarToggle<cr>i
 
-" Snipmate remap settings. It's binding overwritten standard
-" bindings.
-" Snipmate using bellow VIM's default keys, just unmap it.
-
-
-
 " =========== END Plugin Settings =========="
-
-"syntax on
 
 "no root right access ?
 cmap w!! w ! sudo tee >/dev/null %
